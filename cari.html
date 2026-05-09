@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BukuKita</title>
+    <title>Hasil Pencarian | BukuKita</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,12 +16,12 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">BukuKita <i class="fa-solid fa-book-open"></i></a>
+            <a href="index.html" class="logo">BukuKita <i class="fa-solid fa-book-open"></i></a>
             <ul class="nav-links">
-                <li><a href="#beranda" class="active">Beranda</a></li>
-                <li><a href="#cari">Cari Buku</a></li>
-                <li><a href="#kategori">Kategori</a></li>
-                <li><a href="#bantuan">Bantuan</a></li>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="cari.html" class="active">Cari Buku</a></li>
+                <li><a href="index.html#kategori">Kategori</a></li>
+                <li><a href="index.html#bantuan">Bantuan</a></li>
             </ul>
             <div class="nav-buttons">
                 <button class="btn btn-primary" onclick="openModal('jualModal')"><i class="fa-solid fa-plus"></i> Jual
@@ -35,54 +35,61 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero" id="beranda">
-        <div class="hero-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
+    <!-- Search Header -->
+    <section class="search-header">
+        <div class="container">
+            <form class="search-box-large" action="cari.html" method="GET">
+                <input type="text" name="q" placeholder="Cari judul buku, matkul, atau jurusan..." value="Kalkulus" id="searchInput">
+                <button type="submit" class="btn-search-large"><i class="fa-solid fa-search"></i> Cari</button>
+            </form>
+            <p class="search-result-text">Menampilkan 12 hasil untuk "<strong>Kalkulus</strong>"</p>
         </div>
-        <div class="container hero-container">
-            <div class="hero-content">
-                <h1>Jual & Beli Buku Kuliah Sesama Mahasiswa</h1>
-                <p>Hemat lebih banyak, temukan buku yang kamu butuhkan dari mahasiswa lain di kampusmu.</p>
+    </section>
 
-                <form class="search-box" action="cari.html" method="GET">
-                    <input type="text" name="q" placeholder="Cari judul buku, matkul, atau jurusan...">
-                    <button type="submit" class="btn-search"><i class="fa-solid fa-search"></i> Cari</button>
-                </form>
+    <!-- Search Layout -->
+    <section class="search-layout container">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar-filter">
+            <div class="filter-box">
+                <h3>Filter Pencarian</h3>
+                
+                <div class="filter-group">
+                    <h4>Rumpun Ilmu</h4>
+                    <label class="filter-option"><input type="checkbox" checked> Teknik</label>
+                    <label class="filter-option"><input type="checkbox"> MIPA</label>
+                    <label class="filter-option"><input type="checkbox"> Ekonomi</label>
+                    <label class="filter-option"><input type="checkbox"> Kedokteran</label>
+                </div>
 
-                <div class="trust-badges">
-                    <div class="badge">
-                        <i class="fa-solid fa-users"></i>
-                        <span>10.000+ Mahasiswa</span>
-                    </div>
-                    <div class="badge">
-                        <i class="fa-solid fa-university"></i>
-                        <span>12 Fakultas</span>
-                    </div>
-                    <div class="badge">
-                        <i class="fa-solid fa-book"></i>
-                        <span>1000+ Buku Tersedia</span>
+                <div class="filter-group">
+                    <h4>Kondisi Buku</h4>
+                    <label class="filter-option"><input type="checkbox"> Baru</label>
+                    <label class="filter-option"><input type="checkbox" checked> Bekas Baik</label>
+                    <label class="filter-option"><input type="checkbox" checked> Bekas Layak</label>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Harga</h4>
+                    <div class="price-range">
+                        <input type="number" placeholder="Min" class="price-input">
+                        <span>-</span>
+                        <input type="number" placeholder="Max" class="price-input">
                     </div>
                 </div>
-            </div>
-        </div>
-    </header>
 
-    <!-- Featured Books -->
-    <section class="featured-books" id="cari">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Buku Terpopuler Minggu Ini</h2>
-                <a href="#" class="view-all">Lihat Semua <i class="fa-solid fa-arrow-right"></i></a>
+                <button class="btn btn-primary btn-full">Terapkan Filter</button>
             </div>
+        </aside>
+
+        <!-- Search Results Grid -->
+        <div class="search-results">
             <div class="book-grid">
-                <!-- Book Cards -->
+                <!-- Book Card -->
                 <div class="book-card">
                     <div class="book-cover"><img src="assets/kalkulus.png" alt="Kalkulus 2"><span
                             class="condition-badge good">Bekas Baik</span></div>
                     <div class="book-info">
-                        <h3>Kalkulus 2</h3>
+                        <h3>Kalkulus 2 Edisi 9</h3>
                         <p class="subject">Teknik</p>
                         <p class="seller"><i class="fa-solid fa-location-dot"></i> Fakultas Teknik</p>
                         <div class="price-action">
@@ -91,123 +98,58 @@
                         </div>
                     </div>
                 </div>
+                <!-- Book Card -->
                 <div class="book-card">
-                    <div class="book-cover"><img src="assets/algoritma.png" alt="Algoritma Pemrograman"><span
-                            class="condition-badge new">Baru</span></div>
-                    <div class="book-info">
-                        <h3>Algoritma Pemrograman</h3>
-                        <p class="subject">Informatika</p>
-                        <p class="seller"><i class="fa-solid fa-location-dot"></i> Fakultas Teknik</p>
-                        <div class="price-action">
-                            <span class="price">Rp 90.000</span>
-                            <button class="btn-sm">Detail</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="book-card">
-                    <div class="book-cover"><img src="assets/web.png" alt="Pemrograman Web 1"><span
+                    <div class="book-cover"><img src="assets/kalkulus.png" alt="Kalkulus Lanjut"><span
                             class="condition-badge fair">Bekas Layak</span></div>
                     <div class="book-info">
-                        <h3>Pemrograman Web 1</h3>
-                        <p class="subject">Informatika</p>
-                        <p class="seller"><i class="fa-solid fa-location-dot"></i> Fakultas Teknik</p>
+                        <h3>Kalkulus Lanjut Edisi 2</h3>
+                        <p class="subject">MIPA</p>
+                        <p class="seller"><i class="fa-solid fa-location-dot"></i> Fakultas MIPA</p>
                         <div class="price-action">
                             <span class="price">Rp 65.000</span>
                             <button class="btn-sm">Detail</button>
                         </div>
                     </div>
                 </div>
+                <!-- Book Card -->
                 <div class="book-card">
-                    <div class="book-cover"><img src="assets/teknik.png" alt="Pengantar Gambar Teknik"><span
-                            class="condition-badge good">Bekas Baik</span></div>
+                    <div class="book-cover"><img src="assets/kalkulus.png" alt="Kalkulus Purcell"><span
+                            class="condition-badge new">Baru</span></div>
                     <div class="book-info">
-                        <h3>Pengantar Gambar Teknik</h3>
-                        <p class="subject">Teknik Mesin</p>
+                        <h3>Kalkulus Purcell Jilid 2</h3>
+                        <p class="subject">Teknik</p>
                         <p class="seller"><i class="fa-solid fa-location-dot"></i> Fakultas Teknik</p>
                         <div class="price-action">
-                            <span class="price">Rp 80.000</span>
+                            <span class="price">Rp 120.000</span>
+                            <button class="btn-sm">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Book Card -->
+                 <div class="book-card">
+                    <div class="book-cover"><img src="assets/kalkulus.png" alt="Kalkulus Dasar"><span
+                            class="condition-badge good">Bekas Baik</span></div>
+                    <div class="book-info">
+                        <h3>Kalkulus Dasar & Terapan</h3>
+                        <p class="subject">Pendidikan</p>
+                        <p class="seller"><i class="fa-solid fa-location-dot"></i> Fakultas Keguruan</p>
+                        <div class="price-action">
+                            <span class="price">Rp 50.000</span>
                             <button class="btn-sm">Detail</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Categories -->
-    <section class="categories" id="kategori">
-        <div class="container">
-            <h2 class="section-title text-center">Jelajahi Rumpun Ilmu</h2>
-            <div class="category-grid">
-                <div class="category-card"><i class="fa-solid fa-microchip"></i>
-                    <h3>Teknik</h3>
+            
+            <div class="pagination">
+                <button class="btn btn-outline" disabled><i class="fa-solid fa-chevron-left"></i> Sebelumnya</button>
+                <div class="page-numbers">
+                    <button class="page-num active">1</button>
+                    <button class="page-num">2</button>
+                    <button class="page-num">3</button>
                 </div>
-                <div class="category-card"><i class="fa-solid fa-chart-line"></i>
-                    <h3>Ekonomi</h3>
-                </div>
-                <div class="category-card"><i class="fa-solid fa-scale-balanced"></i>
-                    <h3>Hukum</h3>
-                </div>
-                <div class="category-card"><i class="fa-solid fa-stethoscope"></i>
-                    <h3>Kedokteran</h3>
-                </div>
-                <div class="category-card"><i class="fa-solid fa-flask"></i>
-                    <h3>MIPA</h3>
-                </div>
-                <div class="category-card"><i class="fa-solid fa-users"></i>
-                    <h3>Sosial</h3>
-                </div>
-                <div class="category-card"><i class="fa-solid fa-chalkboard-user"></i>
-                    <h3>Pendidikan</h3>
-                </div>
-                <div class="category-card"><i class="fa-solid fa-leaf"></i>
-                    <h3>Pertanian</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bantuan / FAQ -->
-    <section class="faq-section" id="bantuan">
-        <div class="container">
-            <div class="faq-container">
-                <div class="faq-header">
-                    <h2 class="section-title">Pusat Bantuan</h2>
-                    <p>Pertanyaan yang sering diajukan seputar BukuKita</p>
-                </div>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Bagaimana cara menjual buku?</h3>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Klik tombol "Jual Buku" di menu navigasi atas. Isi detail buku seperti judul, foto,
-                                kondisi, dan harga. Buku Anda akan langsung tayang dan bisa dilihat oleh mahasiswa lain.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Apakah transaksi di BukuKita aman?</h3>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Sangat aman! Kami merekomendasikan metode COD (Cash on Delivery) di area kampus untuk
-                                memastikan Anda menerima buku sesuai deskripsi sebelum membayar.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Apakah ada biaya admin?</h3>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Tidak ada! BukuKita 100% gratis digunakan oleh mahasiswa untuk menjual dan membeli buku
-                                tanpa potongan biaya admin apapun.</p>
-                        </div>
-                    </div>
-                </div>
+                <button class="btn btn-outline">Selanjutnya <i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
@@ -224,10 +166,10 @@
                 <div class="footer-links">
                     <h3>Navigasi</h3>
                     <ul>
-                        <li><a href="#beranda">Beranda</a></li>
-                        <li><a href="#cari">Cari Buku</a></li>
-                        <li><a href="#kategori">Kategori</a></li>
-                        <li><a href="#bantuan">Bantuan</a></li>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="cari.html">Cari Buku</a></li>
+                        <li><a href="index.html#kategori">Kategori</a></li>
+                        <li><a href="index.html#bantuan">Bantuan</a></li>
                     </ul>
                 </div>
                 <div class="footer-social">
@@ -245,13 +187,12 @@
         </div>
     </footer>
 
-    <!-- MODALS -->
-
+    <!-- Modals (Copied from index) -->
     <!-- Auth Modal (Login / Register) -->
     <div class="modal-overlay" id="authModal">
         <div class="modal-content auth-modal">
             <span class="close-modal" onclick="closeModal('authModal')"><i class="fa-solid fa-xmark"></i></span>
-
+            
             <div class="auth-tabs">
                 <button class="auth-tab active" onclick="switchAuthTab('login')" id="tab-login">Masuk</button>
                 <button class="auth-tab" onclick="switchAuthTab('register')" id="tab-register">Daftar</button>
@@ -303,7 +244,7 @@
     <div class="modal-overlay" id="jualModal">
         <div class="modal-content jual-modal">
             <span class="close-modal" onclick="closeModal('jualModal')"><i class="fa-solid fa-xmark"></i></span>
-
+            
             <div class="modal-header">
                 <h2>Jual Buku Kuliahmu</h2>
                 <p>Isi detail buku di bawah ini agar mudah ditemukan pembeli.</p>
@@ -371,6 +312,17 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Simple script to get URL params for search
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const query = params.get('q');
+            if (query) {
+                document.getElementById('searchInput').value = query;
+                document.querySelector('.search-result-text').innerHTML = `Menampilkan hasil untuk "<strong>${query}</strong>"`;
+            }
+        });
+    </script>
 </body>
 
 </html>
