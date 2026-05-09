@@ -1058,3 +1058,97 @@ ul {
         position: static;
     }
 }
+
+/* ==================================
+   DARK MODE STYLES
+   ================================== */
+body.dark-mode {
+    --primary-blue: #3b82f6;
+    --primary-hover: #60a5fa;
+    --light-blue: #1e293b;
+    --dark-blue: #f8fafc;
+    --white: #0f172a;
+    --gray-light: #1e293b;
+    --gray-border: #334155;
+    --gray-text: #94a3b8;
+    --text-dark: #f1f5f9;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.7), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
+    --shadow-modal: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+/* Toggle Switch Styles */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 28px;
+    position: relative;
+    width: 50px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: var(--gray-border);
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    background-color: var(--white);
+    bottom: 4px;
+    content: "";
+    height: 20px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 20px;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-blue);
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+.slider-icon {
+    position: absolute;
+    top: 6px;
+    font-size: 14px;
+    color: var(--white);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.slider-icon.sun { left: 7px; color: #f59e0b; }
+.slider-icon.moon { right: 7px; color: #f1f5f9; }
+
+input:checked + .slider .sun { display: none; }
+input:not(:checked) + .slider .moon { display: none; }
+
+body.dark-mode input, body.dark-mode textarea, body.dark-mode select {
+    background-color: var(--gray-light);
+    color: var(--text-dark);
+    border-color: var(--gray-border);
+}
+
+body.dark-mode .nav-container {
+    background-color: var(--white);
+}

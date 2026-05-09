@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Buku | BukuKita</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .detail-layout {
+            display: flex;
+            gap: 3rem;
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .book-gallery {
+            flex: 0 0 350px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 450px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-grid {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .thumbnail:hover, .thumbnail.active {
+            border-color: var(--primary-blue);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .book-details {
+            flex: 1;
+        }
+
+        .book-details h1 {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .book-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--gray-text);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .book-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .book-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+        }
+
+        .seller-card {
+            background-color: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .seller-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .seller-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--gray-text);
+        }
+
+        .seller-name {
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 1.1rem;
+        }
+
+        .seller-rating {
+            color: #f59e0b;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-large {
+            flex: 1;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .book-description h3 {
+            font-size: 1.25rem;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--gray-border);
+        }
+
+        .book-description p {
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .detail-layout {
+                flex-direction: column;
+            }
+            .book-gallery {
+                flex: none;
+                width: 100%;
+            }
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">BukuKita <i class="fa-solid fa-book-open"></i></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="cari.html">Cari Buku</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn btn-primary" onclick="openModal('jualModal')"><i class="fa-solid fa-plus"></i> Jual Buku</button>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round">
+                            <i class="fa-solid fa-sun slider-icon sun"></i>
+                            <i class="fa-solid fa-moon slider-icon moon"></i>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Detail Layout -->
+    <section class="detail-layout">
+        <div class="book-gallery">
+            <div class="main-image">
+                <img src="assets/kalkulus.png" alt="Kalkulus 2">
+                <span class="condition-badge good" style="position: absolute; top: 1rem; right: 1rem; z-index: 10;">Bekas Baik</span>
+            </div>
+            <div class="thumbnail-grid">
+                <div class="thumbnail active"><img src="assets/kalkulus.png" alt="Thumb 1"></div>
+                <div class="thumbnail"><img src="assets/kalkulus.png" alt="Thumb 2" style="filter: grayscale(100%);"></div>
+            </div>
+        </div>
+
+        <div class="book-details">
+            <h1>Kalkulus 2 Edisi 9</h1>
+            <div class="book-meta">
+                <span><i class="fa-solid fa-layer-group"></i> Teknik</span>
+                <span><i class="fa-solid fa-clock"></i> Diposting 2 hari lalu</span>
+                <span><i class="fa-solid fa-eye"></i> 124 Dilihat</span>
+            </div>
+
+            <div class="book-price">Rp 85.000</div>
+
+            <div class="seller-card">
+                <div class="seller-info">
+                    <div class="seller-avatar"><i class="fa-solid fa-user"></i></div>
+                    <div>
+                        <div class="seller-name">Budi Santoso</div>
+                        <div class="seller-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span style="color: var(--gray-text);">(12 Ulasan)</span>
+                        </div>
+                        <div style="font-size: 0.85rem; color: var(--gray-text); margin-top: 0.2rem;"><i class="fa-solid fa-location-dot"></i> Fakultas Teknik</div>
+                    </div>
+                </div>
+                <button class="btn btn-outline" onclick="window.location.href='dashboard.html'">Lihat Profil</button>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary btn-large" onclick="alert('Memulai percakapan dengan penjual...')"><i class="fa-solid fa-comment-dots"></i> Chat Penjual</button>
+                <button class="btn btn-outline btn-large" style="flex: 0 0 auto;"><i class="fa-regular fa-heart"></i> Simpan</button>
+            </div>
+
+            <div class="book-description">
+                <h3>Deskripsi Buku</h3>
+                <p>Buku Kalkulus edisi 9 karangan Purcell, dkk. Sangat cocok untuk mahasiswa tingkat 1 dan 2 jurusan Teknik atau MIPA. Kondisi buku masih sangat bagus, tidak ada halaman yang robek atau hilang.</p>
+                <p><strong>Catatan Kondisi:</strong> Ada sedikit coretan stabilo di bab 1 dan bab 3, tapi tulisan masih sangat jelas terbaca. Cover sudah dilampisi plastik mika pelindung.</p>
+                <p>Bisa COD di area kampus (sekitaran gerbang Fakultas Teknik) jam 3 sore - 5 sore setiap hari kerja.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>BukuKita 📚</h2>
+                    <p>Marketplace buku bekas andalan mahasiswa Universitas Jenderal Soedirman.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BukuKita.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

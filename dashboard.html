@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Mahasiswa | BukuKita</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dashboard-layout {
+            display: flex;
+            gap: 2rem;
+            padding: 3rem 2rem;
+            align-items: flex-start;
+            min-height: 80vh;
+        }
+
+        .dashboard-sidebar {
+            flex: 0 0 250px;
+            background-color: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: var(--gray-border);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+        }
+
+        .profile-name {
+            font-size: 1.25rem;
+            color: var(--dark-blue);
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-campus {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-menu {
+            list-style: none;
+            text-align: left;
+        }
+
+        .dashboard-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-menu a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            color: var(--text-dark);
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+        }
+
+        .dashboard-menu a:hover,
+        .dashboard-menu a.active {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .dashboard-content {
+            flex: 1;
+            background-color: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-border);
+        }
+
+        .dashboard-header h2 {
+            color: var(--dark-blue);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 4rem 0;
+            color: var(--gray-text);
+        }
+        
+        .empty-state i {
+            font-size: 4rem;
+            color: var(--gray-border);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">BukuKita <i class="fa-solid fa-book-open"></i></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="cari.html">Cari Buku</a></li>
+                <li><a href="index.html#kategori">Kategori</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn btn-primary" onclick="openModal('jualModal')"><i class="fa-solid fa-plus"></i> Jual Buku</button>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round">
+                            <i class="fa-solid fa-sun slider-icon sun"></i>
+                            <i class="fa-solid fa-moon slider-icon moon"></i>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <section class="dashboard-layout container">
+        <aside class="dashboard-sidebar">
+            <div class="profile-pic">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <h3 class="profile-name">Zahra N.</h3>
+            <p class="profile-campus">Universitas Jenderal Soedirman</p>
+            
+            <ul class="dashboard-menu">
+                <li><a href="#" class="active"><i class="fa-solid fa-book"></i> Buku Saya</a></li>
+                <li><a href="#"><i class="fa-solid fa-heart"></i> Disimpan</a></li>
+                <li><a href="#"><i class="fa-solid fa-comments"></i> Pesan <span class="badge">2</span></a></li>
+                <li><a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
+                <li><a href="index.html" style="color: #ef4444;"><i class="fa-solid fa-right-from-bracket"></i> Keluar</a></li>
+            </ul>
+        </aside>
+
+        <main class="dashboard-content">
+            <div class="dashboard-header">
+                <h2>Daftar Buku Saya</h2>
+                <button class="btn btn-primary" onclick="openModal('jualModal')"><i class="fa-solid fa-plus"></i> Tambah Buku Baru</button>
+            </div>
+
+            <div class="book-grid">
+                <!-- Book Card -->
+                <div class="book-card">
+                    <div class="book-cover"><img src="assets/algoritma.png" alt="Algoritma"><span
+                            class="condition-badge new">Baru</span></div>
+                    <div class="book-info">
+                        <h3>Algoritma Pemrograman</h3>
+                        <p class="subject">Informatika</p>
+                        <p class="seller"><i class="fa-solid fa-eye"></i> Dilihat 45 kali</p>
+                        <div class="price-action">
+                            <span class="price">Rp 75.000</span>
+                            <button class="btn-sm btn-outline">Edit</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Book Card -->
+                <div class="book-card">
+                    <div class="book-cover"><img src="assets/web.png" alt="Pemrograman Web 1"><span
+                            class="condition-badge fair">Bekas Layak</span></div>
+                    <div class="book-info">
+                        <h3>Pemrograman Web 1</h3>
+                        <p class="subject">Informatika</p>
+                        <p class="seller"><i class="fa-solid fa-eye"></i> Dilihat 12 kali</p>
+                        <div class="price-action">
+                            <span class="price">Rp 50.000</span>
+                            <button class="btn-sm btn-outline">Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>BukuKita 📚</h2>
+                    <p>Marketplace buku bekas andalan mahasiswa Universitas Jenderal Soedirman. Temukan buku dengan
+                        mudah, jual dengan cepat.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BukuKita. Dibuat untuk Mahasiswa Universitas Jenderal Soedirman.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Jual Buku Modal (Copied) -->
+    <div class="modal-overlay" id="jualModal">
+        <div class="modal-content jual-modal">
+            <span class="close-modal" onclick="closeModal('jualModal')"><i class="fa-solid fa-xmark"></i></span>
+            
+            <div class="modal-header">
+                <h2>Jual Buku Kuliahmu</h2>
+                <p>Isi detail buku di bawah ini agar mudah ditemukan pembeli.</p>
+            </div>
+
+            <form class="jual-form">
+                <!-- Image Upload -->
+                <div class="image-upload-box">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p><strong>Klik untuk upload</strong> atau drag and drop</p>
+                    <p class="text-sm">PNG, JPG up to 5MB</p>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label>Judul Buku</label>
+                        <input type="text" placeholder="Contoh: Kalkulus Edisi 9" required>
+                    </div>
+                    <div class="form-group half">
+                        <label>Rumpun Ilmu</label>
+                        <select required>
+                            <option value="" disabled selected>Pilih kategori...</option>
+                            <option>Teknik</option>
+                            <option>Ekonomi / Bisnis</option>
+                            <option>Hukum</option>
+                            <option>Lainnya</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Harga Jual (Rp)</label>
+                    <input type="number" placeholder="Contoh: 85000" required>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-full btn-lg"
+                    onclick="alert('Buku berhasil diposting!')">Posting Buku Sekarang</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
