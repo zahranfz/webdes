@@ -54,7 +54,8 @@
             transition: var(--transition);
         }
 
-        .thumbnail:hover, .thumbnail.active {
+        .thumbnail:hover,
+        .thumbnail.active {
             border-color: var(--primary-blue);
         }
 
@@ -167,10 +168,12 @@
             .detail-layout {
                 flex-direction: column;
             }
+
             .book-gallery {
                 flex: none;
                 width: 100%;
             }
+
             .action-buttons {
                 flex-direction: column;
             }
@@ -188,7 +191,8 @@
                 <li><a href="cari.html">Cari Buku</a></li>
             </ul>
             <div class="nav-buttons">
-                <button class="btn btn-primary" onclick="openModal('jualModal')"><i class="fa-solid fa-plus"></i> Jual Buku</button>
+                <button class="btn btn-primary" onclick="openModal('jualModal')"><i class="fa-solid fa-plus"></i> Jual
+                    Buku</button>
                 <div class="theme-switch-wrapper">
                     <label class="theme-switch" for="checkbox">
                         <input type="checkbox" id="checkbox" />
@@ -207,11 +211,13 @@
         <div class="book-gallery">
             <div class="main-image">
                 <img src="assets/kalkulus.png" alt="Kalkulus 2">
-                <span class="condition-badge good" style="position: absolute; top: 1rem; right: 1rem; z-index: 10;">Bekas Baik</span>
+                <span class="condition-badge good"
+                    style="position: absolute; top: 1rem; right: 1rem; z-index: 10;">Bekas Baik</span>
             </div>
             <div class="thumbnail-grid">
                 <div class="thumbnail active"><img src="assets/kalkulus.png" alt="Thumb 1"></div>
-                <div class="thumbnail"><img src="assets/kalkulus.png" alt="Thumb 2" style="filter: grayscale(100%);"></div>
+                <div class="thumbnail"><img src="assets/kalkulus.png" alt="Thumb 2" style="filter: grayscale(100%);">
+                </div>
             </div>
         </div>
 
@@ -229,7 +235,7 @@
                 <div class="seller-info">
                     <div class="seller-avatar"><i class="fa-solid fa-user"></i></div>
                     <div>
-                        <div class="seller-name">Budi Santoso</div>
+                        <div class="seller-name">Bagas Budi</div>
                         <div class="seller-rating">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
@@ -238,22 +244,28 @@
                             <i class="fa-solid fa-star-half-stroke"></i>
                             <span style="color: var(--gray-text);">(12 Ulasan)</span>
                         </div>
-                        <div style="font-size: 0.85rem; color: var(--gray-text); margin-top: 0.2rem;"><i class="fa-solid fa-location-dot"></i> Fakultas Teknik</div>
+                        <div style="font-size: 0.85rem; color: var(--gray-text); margin-top: 0.2rem;"><i
+                                class="fa-solid fa-location-dot"></i> Fakultas Teknik</div>
                     </div>
                 </div>
                 <button class="btn btn-outline" onclick="window.location.href='dashboard.html'">Lihat Profil</button>
             </div>
 
             <div class="action-buttons">
-                <button class="btn btn-primary btn-large" onclick="alert('Memulai percakapan dengan penjual...')"><i class="fa-solid fa-comment-dots"></i> Chat Penjual</button>
-                <button class="btn btn-outline btn-large" style="flex: 0 0 auto;"><i class="fa-regular fa-heart"></i> Simpan</button>
+                <button class="btn btn-primary btn-large" onclick="alert('Memulai percakapan dengan penjual...')"><i
+                        class="fa-solid fa-comment-dots"></i> Chat Penjual</button>
+                <button class="btn btn-outline btn-large" style="flex: 0 0 auto;"><i class="fa-regular fa-heart"></i>
+                    Simpan</button>
             </div>
 
             <div class="book-description">
                 <h3>Deskripsi Buku</h3>
-                <p>Buku Kalkulus edisi 9 karangan Purcell, dkk. Sangat cocok untuk mahasiswa tingkat 1 dan 2 jurusan Teknik atau MIPA. Kondisi buku masih sangat bagus, tidak ada halaman yang robek atau hilang.</p>
-                <p><strong>Catatan Kondisi:</strong> Ada sedikit coretan stabilo di bab 1 dan bab 3, tapi tulisan masih sangat jelas terbaca. Cover sudah dilampisi plastik mika pelindung.</p>
-                <p>Bisa COD di area kampus (sekitaran gerbang Fakultas Teknik) jam 3 sore - 5 sore setiap hari kerja.</p>
+                <p>Buku Kalkulus edisi 9 karangan Purcell, dkk. Sangat cocok untuk mahasiswa tingkat 1 dan 2 jurusan
+                    Teknik atau MIPA. Kondisi buku masih sangat bagus, tidak ada halaman yang robek atau hilang.</p>
+                <p><strong>Catatan Kondisi:</strong> Ada sedikit coretan stabilo di bab 1 dan bab 3, tapi tulisan masih
+                    sangat jelas terbaca. Cover sudah dilampisi plastik mika pelindung.</p>
+                <p>Bisa COD di area kampus (sekitaran gerbang Fakultas Teknik) jam 3 sore - 5 sore setiap hari kerja.
+                </p>
             </div>
         </div>
     </section>
